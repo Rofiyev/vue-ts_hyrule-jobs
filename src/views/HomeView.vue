@@ -1,22 +1,29 @@
 <template>
   <main>
-    <h1>{{ state.title }} - {{ state.age }}</h1>
-    <button @click="changeName('Hello Abdulloh!', 20)">click me</button>
+    <JobListComponent :jobs="jobs" />
   </main>
 </template>
 
-<script setup lang="ts">
-import { reactive } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import type { IJobs } from '../interface'
+import JobListComponent from '@/components/JobListComponent.vue'
 
-const state = reactive({
-  title: 'Hello Dilshod!' as string,
-  age: 18 as number | string
+export default defineComponent({
+  name: 'HomeView',
+  components: { JobListComponent },
+  data() {
+    return {
+      jobs: [
+        { id: '1', title: 'farm worker', location: 'lon lon ranch', salary: 30_000 },
+        { id: '2', title: 'quarryman', location: 'death mountain', salary: 40_000 },
+        { id: '3', title: 'then lost words', location: 'flute player', salary: 25_000 },
+        { id: '4', title: 'fisherman', location: 'lake hylia', salary: 21_000 },
+        { id: '5', title: 'prison guard', location: 'gerudo valley', salary: 32_000 }
+      ] as IJobs[]
+    }
+  }
 })
-
-function changeName(name: string, age: number | string) {
-  state.title = name
-  state.age = age
-}
 </script>
 
 <style scoped></style>
