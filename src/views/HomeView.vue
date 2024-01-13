@@ -1,12 +1,21 @@
 <template>
-  <main>
-    <JobListComponent :jobs="jobs" />
+  <main class="app">
+    <header>
+      <div class="order">
+        <button @click="handleClick('title')">order by title</button>
+        <button @click="handleClick('salary')">order by salary</button>
+        <button @click="handleClick('location')">order by location</button>
+      </div>
+    </header>
+
+    <JobListComponent :jobs="jobs" :order="order" />
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import type { IJobs } from '../interface'
+import type { IJobs } from '@/interface'
+import type { OrderTerm } from '@/types'
 import JobListComponent from '@/components/JobListComponent.vue'
 
 export default defineComponent({
@@ -20,10 +29,33 @@ export default defineComponent({
         { id: '3', title: 'then lost words', location: 'flute player', salary: 25_000 },
         { id: '4', title: 'fisherman', location: 'lake hylia', salary: 21_000 },
         { id: '5', title: 'prison guard', location: 'gerudo valley', salary: 32_000 }
-      ] as IJobs[]
+      ] as IJobs[],
+      order: 'title' as OrderTerm
+    }
+  },
+  methods: {
+    handleClick(term: OrderTerm) {
+      console.log(term)
     }
   }
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+header {
+  text-align: center;
+}
+header .order {
+  margin-top: 20px;
+}
+button {
+  margin: 0 10px;
+  color: #1195c5;
+  border: 3px solid #1195c5;
+  background-color: #d5f0ff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+</style>

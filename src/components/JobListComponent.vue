@@ -22,6 +22,7 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import type { IJobs } from '@/interface'
+import type { OrderTerm } from '@/types'
 
 export default defineComponent({
   name: 'JobListComponent',
@@ -29,6 +30,10 @@ export default defineComponent({
     jobs: {
       required: true,
       type: Array as PropType<IJobs[]>
+    },
+    order: {
+      required: true,
+      type: String as PropType<OrderTerm>
     }
   }
 })
