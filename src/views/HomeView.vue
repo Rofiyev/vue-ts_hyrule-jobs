@@ -35,7 +35,7 @@ export default defineComponent({
   },
   methods: {
     handleClick(term: OrderTerm) {
-      console.log(term)
+      this.order = term
     }
   }
 })
