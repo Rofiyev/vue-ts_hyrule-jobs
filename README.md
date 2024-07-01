@@ -7,7 +7,9 @@
 ### Copy project files to yourself
 
 ```sh
-git clone repo_url
+git clone https://github.com/Rofiyev/vue-ts_hyrule-jobs.git
+
+cd vue-ts_hyrule-jobs
 ```
 
 ### Download all dependencies
